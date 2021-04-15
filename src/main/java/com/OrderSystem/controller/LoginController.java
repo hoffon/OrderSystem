@@ -1,8 +1,8 @@
 package com.OrderSystem.controller;
 
-import com.OrderSystem.Service.CustomerService;
+import com.OrderSystem.Service.UserService;
 import com.OrderSystem.Service.ProductService;
-import com.OrderSystem.model.Customer;
+import com.OrderSystem.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login")
 public class LoginController {
 
-    private CustomerService customerService;
+    private UserService userService;
     private ProductService productService;
 
-    public LoginController(CustomerService customerService,ProductService productService) {
-        this.customerService = customerService;
+    public LoginController(UserService userService, ProductService productService) {
+        this.userService = userService;
         this.productService = productService;
     }
 
@@ -31,14 +31,14 @@ public class LoginController {
 
 
     @PostMapping
-    public String login(@ModelAttribute Customer customer, Model model) {
-        Customer storedCustomer = customerService.checkPin(customer);
+    public String login(@ModelAttribute User user, Model model) {
+        User storedUser = userService.checkPin(user);
 
-        if (storedCustomer != null) {
+        if (storedUser != null) {
             model.addAttribute("producttitle",
-                    storedCustomer.getName() + " Products");
+                    storedUser.getName() + " Products");
             model.addAttribute("products",
-                    productService.getCustomerProduct(customer.getId()));
+                    productService.getCustomerProduct(user.getId()));
             return "customerproduct";
         } else {
             model.addAttribute("greeting", "Can't find customer");

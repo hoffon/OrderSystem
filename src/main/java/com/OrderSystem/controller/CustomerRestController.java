@@ -1,7 +1,7 @@
 package com.OrderSystem.controller;
 
-import com.OrderSystem.Service.CustomerService;
-import com.OrderSystem.model.Customer;
+import com.OrderSystem.Service.UserService;
+import com.OrderSystem.model.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/user")
 public class CustomerRestController {
 
-    private CustomerService customerService;
+    private UserService userService;
 
-    public CustomerRestController(CustomerService customerService) {
-        this.customerService = customerService;
+    public CustomerRestController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
-    public List<Customer> getAll() {
-        return customerService.getCustomers();
+    public List<User> getAll() {
+        return userService.getCustomers();
     }
 
     @GetMapping("/{id}")
-    public Customer getOne(@PathVariable int id) {
-        return customerService.findCustomer(id);
+    public User getOne(@PathVariable int id) {
+        return userService.findCustomer(id);
     }
 
 }

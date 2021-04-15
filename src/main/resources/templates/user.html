@@ -6,8 +6,8 @@
       xmlns:th="https://www.thymeleaf.org">
 
 <div class="container" layout:fragment="content">
-    <h1>Register Customer</h1>
-    <form action="#" th:action="@{/customer}" method="POST">
+    <h1>Register User</h1>
+    <form action="#" th:action="@{/user}" method="POST">
         <div class="form-group">
             <label for="inputId">Id</label>
             <input type="input" class="form-control" name="id" id="inputId">
@@ -29,7 +29,7 @@
     </form>
     <hr>
 
-    <h1>All Customers</h1>
+    <h1>All Users</h1>
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
@@ -39,10 +39,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="customer: ${allCustomers}">
-            <td th:text="${customer.id}"></td>
-            <td th:text="${customer.name}"></td>
-            <td th:text="${customer.pin}"></td>
+        <tr th:each="user: ${allUsers}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.pin}"></td>
         </tr>
         </tbody>
     </table>
