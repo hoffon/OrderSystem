@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+    <link th:rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+    <h1>Customer</h1>
+    <form action="#" th:action="@{/customer}" method="POST">
+
+<!--        <div class="form-group">-->
+<!--            <label for="inputCustomerID">CustomerId</label>-->
+<!--            <input type="input" class="form-control" name="customerId" id="inputCustomerID">-->
+<!--        </div>-->
+
+        <div class="form-group">
+            <label for="inputCustomerName">Name</label>
+            <input type="input" class="form-control" name="customer_name" id="inputCustomerName">
+        </div>
+
+        <div class="form-group">
+            <label for="inputSurname">Surname</label>
+            <input type="input" class="form-control" name="customer_surname" id="inputSurname">
+        </div>
+        <div class="form-group">
+            <label for="inputPhone">Phone</label>
+            <input type="input" class="form-control" name="customer_phone" id="inputPhone">
+        </div>
+        <div class="form-group">
+            <label for="inputprovince">Province</label>
+                <input type="input" class="form-control" name="province" id="inputprovince">
+        </div>
+        <div class="form-group">
+            <label for="inputpostal">Postal ID</label>
+            <input type="input" class="form-control" name="postal_id" id="inputpostal">
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary">
+        </div>
+    </form>
+
+    <hr>
+    <h1>All Customer</h1>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Province</th>
+            <th>PostalID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${allCustomers}">
+            <td th:text="${customer.customerID}"></td>
+            <td th:text="${customer.customer_name}"></td>
+            <td th:text="${customer.customer_surname}"></td>
+            <td th:text="${customer.customer_phone}"></td>
+            <td th:text="${customer.province}"></td>
+            <td th:text="${customer.postal_id}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/customer/edit/{customerID}(customerID=${customer.customerID})}">Edit</a>
+            </td>
+            <td>
+                <form th:action="@{/customer/delete/{customerID}(customerID=${customer.customerID})}" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

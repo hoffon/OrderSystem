@@ -25,15 +25,15 @@ public class UserService {
         this.userList = new ArrayList<>();
     }
 
-    public void createCustomer(User user) {
+    public void createUser(User user) {
         userList.add(user);
         repository.save(user);
     }
 
-    public List<User> getCustomers() {
+    public List<User> getUsers() {
         return repository.findAll();
     }
-    public User findCustomer(int id) {
+    public User findUser(int id) {
         try {
             return repository.findById(id).get();
         } catch (NoSuchElementException e) {
@@ -44,7 +44,7 @@ public class UserService {
 
     public User checkPin(User inputUser) {
         // 1. หา customer ที่มี id ตรงกับพารามิเตอร์
-        User storedUser = findCustomer(inputUser.getId());
+        User storedUser = findUser(inputUser.getId());
 
         // 2. ถ้ามี id ตรง ให้เช็ค pin ว่าตรงกันไหม โดยใช้ฟังก์ชันเกี่ยวกับ hash
         if (storedUser != null) {

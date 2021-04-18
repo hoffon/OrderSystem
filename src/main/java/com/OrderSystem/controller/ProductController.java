@@ -42,9 +42,9 @@ public class ProductController {
         return "redirect:/product";
     }
     @PostMapping("/delete/{product_id}")
-    public String deleteAccount(@PathVariable int product_id,
+    public String deleteProduct(@PathVariable int product_id,
                                 Model model) {
-        productService.deleteBankAccount(product_id);
+        productService.deleteProduct(product_id);
         model.addAttribute("allProducts",productService.getProducts());
         return "redirect:/product";
     }

@@ -11,22 +11,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
-public class CustomerRestController {
+public class UserRestController {
 
     private UserService userService;
 
-    public CustomerRestController(UserService userService) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
     public List<User> getAll() {
-        return userService.getCustomers();
+        return userService.getUsers();
     }
 
     @GetMapping("/{id}")
     public User getOne(@PathVariable int id) {
-        return userService.findCustomer(id);
+        return userService.findUser(id);
     }
 
 }

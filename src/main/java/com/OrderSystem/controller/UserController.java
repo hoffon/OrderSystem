@@ -21,14 +21,14 @@ public class UserController {
 
     @GetMapping
     public String getCustomerPage(Model model) {
-        model.addAttribute("allUsers", userService.getCustomers());
+        model.addAttribute("allUsers", userService.getUsers());
         return "user";
     }
 
     @PostMapping
     public String registerCustomer(@ModelAttribute User user, Model model) {
-        userService.createCustomer(user);
-        model.addAttribute("allUsers", userService.getCustomers());
+        userService.createUser(user);
+        model.addAttribute("allUsers", userService.getUsers());
         return "redirect:user";
     }
 }

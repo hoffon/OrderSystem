@@ -17,7 +17,7 @@ public class ProductService {
         this.restTemplate = restTemplate;
     }
     public List<Product> getCustomerProduct(int customerId) {
-        String url = "http://localhost:8091/api/product/customer/" +
+        String url = "http://localhost:8091/api/product/user/" +
                 customerId;
         ResponseEntity<Product[]> response =
                 restTemplate.getForEntity(url, Product[].class);
@@ -53,7 +53,7 @@ public class ProductService {
                 product.getProduct_id();
         restTemplate.put(url, product);
     }
-    public void deleteBankAccount(int product_id) {
+    public void deleteProduct(int product_id) {
         String url = "http://localhost:8091/api/product/" + product_id;
         restTemplate.delete(url);
     }
